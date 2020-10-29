@@ -24,24 +24,27 @@
         #resultado p {
             margin: 0 0 10px;
         }
+
+        .oculto {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        
     </style>
 </head>
 
 <body>
     <h1>Metodos Express</h1>
+    <h4>Editar datos de una persona</h4>
 
-    <a href="editar.html">EDITAR</a>
+    <div id="result"></div>
 
-    <div class="formulario">
-        <input id="nombre" type="text" placeholder="nombre" />
-        <input id="apellido" type="text" placeholder="apellido" />
-        <input id="edad" type="text" placeholder="edad" />
-        <button onclick="enviarPersona()">AÑADIR</button>
-    </div>
 
-    <div id="resultado"></div>
-
-    <script src="app.js"></script>
+    <script src="./appedit.js"></script>
 
 
 </body>
