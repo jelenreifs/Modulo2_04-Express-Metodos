@@ -24,19 +24,62 @@
         #resultado p {
             margin: 0 0 10px;
         }
+
+        .nav-bar {
+            background-color: #333;
+            padding: 0.1em 0;
+            margin-bottom: 0.5em;
+        }
+
+        .nav-bar ul {
+            display: flex;
+            margin-bottom: 1em;
+        }
+
+        .nav-bar li {
+            margin-right: 1em;
+        }
+
+        .nav-bar li:hover {
+            background-color: #c00;
+        }
+
+        .nav-bar a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
     <h1>Metodos Express</h1>
+    <div class="nav-bar">
+        <ul>
+            <li><a href="#">INDEX</a></li>
+            <li><a href="editar_01.html">EDITAR_01</a></li>
+            <li><a href="editar_02.html">EDITAR_02</a></li>
+        </ul>
+    </div>
 
-    <a href="editar.html">EDITAR</a>
 
     <div class="formulario">
         <input id="nombre" type="text" placeholder="nombre" />
         <input id="apellido" type="text" placeholder="apellido" />
         <input id="edad" type="text" placeholder="edad" />
         <button onclick="enviarPersona()">AÑADIR</button>
+    </div>
+
+    <div class="formulario">
+        <input id="nombreEditar" type="text" placeholder="nombre" />
+        <input id="apellidoEditar" type="text" placeholder="apellido" />
+        <input id="edadEditar" type="text" placeholder="edad" />
+        <button onclick="editPersona()">EDITAR</button>
+    </div>
+
+    <div class="formulario">
+        <input id="nombreEliminar" type="text" placeholder="nombre" />
+        <button onclick="eliminarPersona()">EDITAR</button>
     </div>
 
     <div id="resultado"></div>

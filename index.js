@@ -48,37 +48,51 @@ let persona = {
 
 
 app.put('/personas', function (req, res) {
-    let boolean = false;
+    let nombre = req.body.nombre
+    let apellido = req.body.apellido
+    let edad = req.body.edad
 
-    let nombre = req.body.nombre;
-    let apellido = req.body.apellido;
-    let edad = req.body.edad;
-
-
-   let persona = {
-            nombre: nombre,
-            apellido: apellido,
-            edad: edad
-    };
-    
-    
-    for (let i = 0; i < personas.length; i++) {
-        if (personas[i].nombre === nombre) {
-            persona.nombre = nombre;
-            persona.apellido = apellido;
-            persona.edad = edad;
-
-        /*     persona = 
-                `<h3>${personas[i].nombre} ${personas[i].apellido}</h3>
-                <p>${personas[i].edad}</p>` */
-        
-           boolean = true; 
-            console.log("Hola caracola");
-            console.log(persona);
-        }  
+  let persona = {
+        nombre: nombre,
+        apellido: apellido,
+        edad: edad
     }
 
-    boolean ? res.send(persona) : res.send("No existe persona");      
+
+
+
+    for (let i = 0; i < personas.length; i++) {
+        if (personas[i].nombre === nombre) {
+            personas[i].apellido = apellido
+            personas[i].edad = edad 
+
+            let mensaje = {
+                mensaje: `${personas[i].nombre} ha sido modificado`
+               
+            }; 
+            res.send(persona) 
+            console.log(persona)
+            
+            
+        }        
+    }
+});
+
+
+app.delete('/personas', function (req, res) {
+    let nombre = req.body.nombre
+
+    for (let i = 0; i < personas.length; i++) {
+        if (personas[i].nombre === nombre) {
+            console.log(personas[i]);
+
+            let mensaje = {
+                mensaje: `${personas[i].nombre} ha sido eliminada`
+            };
+            res.send(mensaje)
+            personas.splice(i, 1);
+        }        
+    }
 });
 
 

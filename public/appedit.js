@@ -7,7 +7,7 @@
                     persona += `
                     <h3>${e.nombre} ${e.apellido}</h3>
                     <p>Edad: ${e.edad}</p>
-                    <button onclick="editar()">EDITAR</button>
+                    <button onclick="editar('${e.nombre}')">EDITAR</button>
                     </br></br>
                     <div class="formularioEditar oculto">
                         <input id="nombre" type="text" placeholder="nombre" />
@@ -20,28 +20,36 @@
                 document.getElementById('result').innerHTML = persona;
         });
 
-  let persona = "";
-
-function editar() {
-    let formularioEditar = document.querySelector(".formularioEditar");
-    console.log(formularioEditar);
-    formularioEditar.classList.toggle("visible");
-}
-
+let persona = "";
   
-function actualizarDatos() {
-    let nombre = document.getElementById("nombre").value;
-    let apellido = document.getElementById("apellido").value;
-    let edad = document.getElementById("edad").value;
-     
 
-  let persona = {
+function editar(nombre) {
+    let persona = {
         nombre,
         apellido,
         edad
     }
 
-    let i;
+    console.log(persona)
+
+ 
+    let formularioEditar = document.querySelector(".formularioEditar");
+formularioEditar.classList.toggle("visible");
+}
+
+  
+function actualizarDatos() {
+
+      let persona = {
+        nombre,
+        apellido,
+        edad
+    }
+/*   this.nombre = document.getElementById("nombre").value;
+this.apellido = document.getElementById("apellido").value;
+ this.edad = document.getElementById("edad").value; */
+     
+
  
     fetch('/personas', {
             method: "PUT",
@@ -50,7 +58,7 @@ function actualizarDatos() {
             },
             body: JSON.stringify(persona)
         })
-            .then(response => response.json())
+        .then(response => response.json())
         .then(data => {
             data.persona = persona
            
@@ -62,8 +70,8 @@ function actualizarDatos() {
               persona += `
                     <h3>${nombre} ${apellido}</h3>
                     <p>Edad: ${edad}</p>
-                    <button onclick="editar()">EDITAR</button>
-            `;
+                    <button onclick="editar()">EDITAR</button>`
+         
             });
                 document.getElementById('result').innerHTML = persona;
    
